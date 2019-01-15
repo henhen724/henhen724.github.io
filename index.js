@@ -1,3 +1,7 @@
+Scout.configure({ clientId: "eb415df5-c945-4ffa-a94e-4d6b8d4dc315" }).then(() => {});
+Scout.titles.list().then(titles => console.log(titles));
+
+
 window.onload = function () {
     var url = document.location.href;
     try{
@@ -7,7 +11,7 @@ window.onload = function () {
           tmp = params[i].split('=');
           data[tmp[0]] = tmp[1];
         }
-        document.getElementById('here').innerHTML = data.name;
+        document.getElementById('here').innerHTML = data.player;
     }
     catch(err) {
       if(err.message === "Cannot read property 'split' of undefined"){
@@ -21,8 +25,7 @@ window.onload = function () {
 
 function searchAttempt() {
     var input = document.getElementById('header-search-bar').value;
-    //window.history.replaceState(statedata, title, url);
+    var firstUri = window.location.href;
+    window.history.replaceState('', '',  "index.html?player=" + input);
     console.log(input);
 }
-Scout.configure({ clientId: "eb415df5-c945-4ffa-a94e-4d6b8d4dc315" }).then(() => {});
-Scout.titles.list().then(titles => console.log(titles));
