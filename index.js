@@ -26,6 +26,6 @@ window.onload = function () {
 function searchAttempt() {
     var input = document.getElementById('header-search-bar').value;
     var firstUri = window.location.href;
-    window.history.replaceState('', '',  "index.html?player=" + input);
+    window.history.replaceState('', input + '\'s Stats',  "index.html?player=" + input);
     console.log(input);
 }
