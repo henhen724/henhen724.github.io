@@ -1,6 +1,8 @@
 Scout.configure({ clientId: "eb415df5-c945-4ffa-a94e-4d6b8d4dc315" }).then(() => {});
-Scout.titles.list().then(titles => console.log(titles));
-
+let playerP = Scout.players.search("Ninja", "epic", null, "fortnite")
+  .then(search => Scout.players.get("fortnite", search.results[0].player.playerId));
+playerP.then(player => document.getElementById('stats-display').innerHTML = player);
+playerP.then(player => console.log(player));
 
 window.onload = function () {
     var url = document.location.href;
@@ -26,6 +28,6 @@ window.onload = function () {
 function searchAttempt() {
     var input = document.getElementById('header-search-bar').value;
     var firstUri = window.location.href;
-    window.history.replaceState('', input + '\'s Stats',  "index.html?player=" + input);
+    window.history.replaceState('', '',  "index.html?player=" + input);
     console.log(input);
 }
