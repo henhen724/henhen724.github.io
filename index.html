@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <head>
-	<link href="StyleSheet.css" rel="stylesheet" type="text/css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,
+	initial-scale=1.0">
+	<meta http-eqiuv="X-UA-Compatible" content="ie=edge">
+	<title>Fornite Search</title>
+	<link href="index.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+
 </head>
 <body>
-	<div class="top-bar">
+	<div class="header-search-bar">
 		<!-- <label class="zhmseh-1 hbaGyJ" for="header-search-bar">
 			<svg class="zhmseh-2 eCSxHJ" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
 				<g>
@@ -13,41 +20,9 @@
 				</g>
 			</svg>
 		</label> -->
-		<form method="post" action="" id="form-for-search">
-			<input type="search class" class="main-search" id = "header-search-bar" placeholder="Search Player" role="search" value>
-			<input type="submit" id="header-search-button" onClick="search()" value="?">
-		</form>
+	<input type="text" name="search" value="" autocomplete="off" id = "header-search-bar" onkeyup="searchAttempt()" placeholder="Search Player" >
 	</div>
+
 	<script src="https://sdk.scoutsdk.com/1.0.0/js/Scout.js"></script>
-	<script async>
-		window.onload = function () {
-    		var url = document.location.href;
-    		try{
-        		params = url.split('?')[1].split('&'),
-        		data = {}, tmp;
-    			for (var i = 0, l = params.length; i < l; i++) {
-         			tmp = params[i].split('=');
-         			data[tmp[0]] = tmp[1];
-    			}
-    			document.getElementById('here').innerHTML = data.name;
-    		}
-    		catch(err) { }
-		}
-		input = document.getElementById("header-search-bar")
-		input.addEventListener("keyup", function(event) {
-  			// Cancel the default action, if needed
-  			event.preventDefault();
-  			// Number 13 is the "Enter" key on the keyboard
-  			if (event.keyCode === 13) {
-    		// Trigger the button element with a click
-    		document.getElementById("search-button").click();
-  			}
-		});
-		function search() {
-    		var b = document.getElementById('header-search-bar').value,
-        	window.history.replaceState(statedata, title, url);
-		}
-		Scout.configure({ clientId: "eb415df5-c945-4ffa-a94e-4d6b8d4dc315" }).then(() => {});
-		Scout.titles.list().then(titles => console.log(titles));
-	</script>
+	<script src="index.js"></script>
 </body>
