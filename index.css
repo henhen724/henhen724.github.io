@@ -28,6 +28,7 @@ div#stats-background{
   background-color: black;
   top: 8px;
   width: 95%;
+  hieght: 350px;
   background: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
@@ -60,8 +61,7 @@ h1{
   font-weight: 800;
 }
 ul#stats-display{
-  left: 2.5hv;
-  width: 95hv;
+  width: 95%;
   list-style: none;
   display: inline-block;
   margin: auto;
@@ -70,7 +70,7 @@ ul#stats-display{
 }
 li{
   display: table-cell;
-  width: 23%;
+  width: 200px;
   height: 200px;
   background: #673ab7;
   margin: 10px;
