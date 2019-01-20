@@ -20,5 +20,23 @@
 		</svg>
 		<input type="text" name="search" value="" autocomplete="off" id = "header-search-bar" onkeyup="searchAttempt()" placeholder="Search Player" >
 	</div>
-  <script src="https://sdk.scoutsdk.com/1.0.0/js/Scout.js"></script>
+	<div id="stats-background">
+		<h1 id="screen-name">test</h1>
+  		<ul class="stats-display" id="stats-display-1">
+  			<li>Kills<br><h2 id="KILLS"></h2></li>
+				<li>Score<br><h2 id="SCORE"></h2></li>
+				<li>K/D<br><h2 id="KILLDEATHRATIO"></h2></li>
+				<li>Winrate<br><h2 id="WINRATE"></h2></li>
+				<li>Matches Played<br><h2 id="MATCHESPLAYED"></h2></li>
+  		</ul>
+			<ul class="stats-display" id="stats-display-2">
+				<li>Wins<br><h2 id="PLACETOP1"></h2></li>
+				<li>Top 3<br><h2 id="PLACETOP3"></h2></li>
+				<li>Top 6<br><h2 id="PLACETOP6"></h2></li>
+				<li>Top 12<br><h2 id="PLACETOP12"></h2></li>
+				<li>Top 25<br><h2 id="PLACETOP25"></h2></li>
+		</ul>
+	</div>
+	<script src="https://sdk.scoutsdk.com/1.0.0/js/Scout.js"></script>
+	<script src="src/profile.js"></script>
 </body>
