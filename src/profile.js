@@ -25,7 +25,7 @@ checkSearch("Ninja");
 function searchAttempt() {
     var input = document.getElementById('header-search-bar').value;
     console.log(input);
-    checkSearch(input)
+    checkSearch(input);
 }
 
 async function checkSearch(input) {
@@ -38,7 +38,7 @@ async function checkSearch(input) {
       }
       if(index != -1)
       {
-        window.history.replaceState('', '',  "index.html?player=" + input);
+        window.history.replaceState('', '',  "profile.html?player=" + input);
         renderScreenName(rslt[index].player.handle);
         await Scout.players.get("fortnite", search.results[index].player.playerId)
           .then(result => renderResult(result));

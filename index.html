@@ -5,12 +5,18 @@
 	initial-scale=1.0">
 	<meta http-eqiuv="X-UA-Compatible" content="ie=edge">
 	<title>Fornite Search</title>
-	<link href="general.css" rel="stylesheet" type="text/css">
+	<link href="style/index.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-
+  <script src="src/index.js"></script>
 </head>
 <body>
+  <ul id="navigation-bar">
+    <li><a class="active">Home</a></li>
+    <li><a href="profile.html">Your Profile</a></li>
+    <li><a href="about.html">About</a></li>
+    <li style="float:right"><a href="checkout.html">WAGE NOW</a></li>
+  </ul>
 	<div class="header-search-bar">
 		<svg class="zhmseh-2 eCSxHJ" width="20px" height="20px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
 			<g>
@@ -18,7 +24,15 @@
 				</path>
 			</g>
 		</svg>
-		<input type="text" name="search" value="" autocomplete="off" id = "header-search-bar" onkeyup="searchAttempt()" placeholder="Search Player" >
+		<input type="text" name="search" value="" autocomplete="off" id = "header-search-bar" onkeyup="search()" placeholder="Search Player" >
 	</div>
-  <script src="https://sdk.scoutsdk.com/1.0.0/js/Scout.js"></script>
+  <div class="" id="HOWITWORKS">
+    WAGE
+  </div>
+  <div class="" id="WHATYOUNEED">
+    DROP
+  </div>
+  <div class="" id="GETSTARTED">
+    <a href="checkout.html">WAGE NOW</a>
+  </div>
 </body>

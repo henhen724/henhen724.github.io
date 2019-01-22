@@ -5,12 +5,18 @@
 	initial-scale=1.0">
 	<meta http-eqiuv="X-UA-Compatible" content="ie=edge">
 	<title>Fornite Search</title>
-	<link href="general.css" rel="stylesheet" type="text/css">
+	<link href="style/profile.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
 
 </head>
 <body>
+	<ul id="navigation-bar">
+    <li><a href="index.html">Home</a></li>
+    <li><a>Your Profile</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="checkout.html">Contact</a></li>
+  </ul>
 	<div class="header-search-bar">
 		<svg class="zhmseh-2 eCSxHJ" width="20px" height="20px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
 			<g>
@@ -21,7 +27,7 @@
 		<input type="text" name="search" value="" autocomplete="off" id = "header-search-bar" onkeyup="searchAttempt()" placeholder="Search Player" >
 	</div>
 	<div id="stats-background">
-		<h1 id="screen-name">test</h1>
+		<h1 id="screen-name"></h1>
   		<ul class="stats-display" id="stats-display-1">
   			<li>Kills<br><h2 id="KILLS"></h2></li>
 				<li>Score<br><h2 id="SCORE"></h2></li>

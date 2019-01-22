@@ -3,7 +3,7 @@
   padding:0;
 }
 body,html{
-  background: #e0e0e0;
+  background: #4d88ff;
 }
 .header-search-bar{
   position: fixed;
@@ -82,4 +82,7 @@ li{
   line-height: 100px;
   font-family: monospace;
   text-decoration: none;
+}
+.active {
+  background-color: #4CAF50;
 }
