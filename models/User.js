@@ -16,6 +16,26 @@ const UserSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  scoutprofile: {
+    handle: {
+      type: String,
+      required: false
+    },
+    playerId: {
+      type: String,
+      require: false
+    },
+    personaHandle: {
+      type: String,
+      require: false
+    },
+    personaId:{
+      type: String,
+      required: false
+    },
+
+    required: false
   }
 });
 

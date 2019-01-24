@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
+const Scout = require("@scoutsdk/server-sdk");
 
 const app = express();
 //Passport Configuration
@@ -48,9 +49,22 @@ app.use((req, res, next) => {
   next();
 });
 
+const secret = require('./config/keys').ClientSecret;
+const SDKiD = require('./config/keys').ClientId;
+
+//Scout Configuration
+Scout.configure({
+  clientId: SDKiD,
+  clientSecret: secret,
+  scope: "public.read"
+})
+  .then(() => console.log('Conection to Scout SDK Established ...'))
+  .catch(err => console.log(err));
+
 //routes
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
+app.use('/link', require('./routes/link'));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, console.log(`Server started on port ${PORT}`));

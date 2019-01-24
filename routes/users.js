@@ -1,49 +1,49 @@
-const express = require('express');
-const router = express.Router();
-const bcrypt = require('bcryptjs');
-const passport = require('passport');
+const express = require('express')
+const router = express.Router()
+const bcrypt = require('bcryptjs')
+const passport = require('passport')
 
-//Login Page
-router.get('/login', (req, res) => res.render('login'));
+// Login Page
+router.get('/login', (req, res) => res.render('login'))
 
-//User model
-const User = require('../models/User');
+// User model
+const User = require('../models/User')
 
-//Registration Page
-router.get('/register', (req, res) => res.render('register'));
+// Registration Page
+router.get('/register', (req, res) => res.render('register'))
 
-//Registration Request
+// Registration Request
 router.post('/register', (req, res) => {
-  const { name, email, password, password2 } = req.body;
-  let errors = [];
+  const { name, email, password, password2 } = req.body
+  let errors = []
 
-  //Check the fields are filled correctly
-  if(!name || !email || !password || !password2) {
-    errors.push({ msg: 'Make sure you filled in all fields!' });
+  // Check the fields are filled correctly
+  if (!name || !email || !password || !password2) {
+    errors.push({ msg: 'Make sure you filled in all fields!' })
   }
-  if(password !== password2){
-    errors.push({ msg: 'The passwords you entered are different from one another.'});
+  if (password !== password2) {
+    errors.push({ msg: 'The passwords you entered are different from one another.' })
   }
-  //Check that the password is long enough
-  if(password.length < 6){
-    errors.push({ msg: 'Passwords must be at least 6 charaters long.'});
+  // Check that the password is long enough
+  if (password.length < 6) {
+    errors.push({ msg: 'Passwords must be at least 6 charaters long.' })
   }
-  if(errors.length >  0){
+  if (errors.length > 0) {
     res.render('register', {
       errors,
       name,
       email,
       password,
       password2
-    });
+    })
   }
   else {
-    //Validation passed
-    User.findOne({email:email})
+    // Validation passed
+    User.findOne({ email: email })
       .then(user => {
-        if(user) {
-          //User already exists
-          errors.push({ msg:'This email already has an account assoiated with it.'});
+        if (user) {
+          // User already exists
+          errors.push({ msg: 'This email already has an account assoiated with it.' });
           res.render('register', {
             errors,
             name,
@@ -58,11 +58,10 @@ router.post('/register', (req, res) => {
             password
           });
 
-          //Hashing Password
+          // Hashing Password
           bcrypt.genSalt(10, (err, salt) =>
             bcrypt.hash(newUser.password, salt, (err, hash) => {
               if(err) throw err;
-
               //Setting password to the HASHED password
               newUser.password = hash;
               //Saving user
