@@ -1,10 +1,10 @@
-const Scout = require("@scoutsdk/server-sdk");
+const Scout = require('@scoutsdk/server-sdk')
 
 async function main(){
 // Note: We are assuming you are in an async context so we can utilize ES7 async/await. You can create an async context by simply wrapping your code in an async function and invoking the function as a promise.
 await Scout.configure({
-  clientId: require("./config/keys").ClientId,
-  clientSecret: require("./config/keys").ClientSecret,
+  clientId: require('./config/keys').ClientId,
+  clientSecret: require('./config/keys').ClientSecret,
   scope: "public.read"
 });
 
