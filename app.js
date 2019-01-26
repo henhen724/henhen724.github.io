@@ -33,7 +33,7 @@ app.use(
     saveUninitialized: true
   })
 );
-
+ 
 // Passport initialization
 app.use(passport.initialize());
 app.use(passport.session());
