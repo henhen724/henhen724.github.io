@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  scoutprofile: {
+  fortniteprofile: {
     handle: {
       type: String,
       required: false

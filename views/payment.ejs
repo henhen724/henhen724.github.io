@@ -1,0 +1,110 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3">
+          <i class="fas fa-plus"></i> Add Payment Method
+        </h1>
+        <% include ./partials/messages %>
+        <form action="/link/payment" method="POST">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="name"
+              id="name"
+              name="name"
+              class="form-control"
+              placeholder="Enter Name On Card"
+              value="<%= typeof name != 'undefined' ? name : '' %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Card Number</label>
+            <input
+              type="cardnumber"
+              id="cardnumber"
+              name="cardnumber"
+              class="form-control"
+              placeholder="Enter Card Number"
+              value=""
+            />
+          </div>
+          <div class="form-group">
+            <label for="CVC">CVC</label>
+            <input
+              type="CVC"
+              id="CVC"
+              name="CVC"
+              class="form-control"
+              placeholder="The 3 wacky digits on the back"
+              value=""
+            />
+          </div>
+          <div class="form-group">
+            <label for="expYear">Experation Date</label>
+            <input
+              type="expMonth"
+              id="expMonth"
+              name="expMonth"
+              class="form-control"
+              placeholder="MM"
+              value=""
+            />
+            <input
+              type="expYear"
+              id="expYear"
+              name="expYear"
+              class="form-control"
+              placeholder="YYYY"
+              value=""
+            />
+          </div>
+          <div class="form-group">
+            <label for="address">Billing Address</label>
+            <input
+              type="streetAddress"
+              id="streetAddress"
+              name="streetAddress"
+              class="form-control"
+              placeholder="Address"
+              value=""
+            />
+            <input
+              type="city"
+              id="city"
+              name="city"
+              class="form-control"
+              placeholder="City"
+              value=""
+            />
+            <input
+              type="region"
+              id="region"
+              name="region"
+              class="form-control"
+              placeholder="State"
+              value=""
+            />
+            <input
+              type="country"
+              id="country"
+              name="country"
+              class="form-control"
+              placeholder="Country"
+              value=""
+            />
+            <input
+              type="postalCode"
+              id="postalCode"
+              name="postalCode"
+              class="form-control"
+              placeholder="Zip Code"
+              value=""
+            />
+          <button type="submit" class="btn btn-primary btn-block">
+            Add
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
