@@ -1,7 +1,7 @@
 {
   "name": "henhen724.github.io",
   "version": "1.0.0",
-  "description": "",
+  "description": "WageOn LLC Webpage and Service",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -28,6 +28,7 @@
     "express-session": "^1.15.6",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.6",
+    "nodemailer": "^5.1.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "passport-openid": "^0.4.0",

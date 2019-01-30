@@ -9,6 +9,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  emailVerified: {
+    type: Boolean,
+    required: true
+  },
   password: {
     type: String,
     required: true
@@ -36,7 +40,9 @@ const UserSchema = new mongoose.Schema({
     },
 
     required: false
-  }
+  },
+  friends: [{ id: String, name: String }],
+  friendRequests: [{ id: String, name: String}]
 })
 
 const User = mongoose.model('User', UserSchema)
