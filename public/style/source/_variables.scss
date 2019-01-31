@@ -7,7 +7,7 @@
 
 $white:    #fff !default;
 $gray-100: #EBEBEB !default;
-$gray-200: #4E5D6C !default;
+$gray-200: rgb(28, 72, 116) !default;
 $gray-300: #dee2e6 !default;
 $gray-400: #ced4da !default;
 $gray-500: #adb5bd !default;
@@ -36,12 +36,12 @@ $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         lighten($gray-200, 35%) !default;
 $dark:          $gray-200 !default;
-/*
+
 $yiq-contrasted-threshold:  185 !default;
 
 // Body
 
-// $body-bg:                   #31b7e0 !default;
+$body-bg:                   rgb(103, 167, 226) !default;
 $body-color:                $gray-100 !default;
 
 // Components
@@ -151,4 +151,4 @@ $breadcrumb-active-color:           $body-color !default;
 
 // Code
 
-$pre-color:                         inherit !default; */
+$pre-color:                         inherit !default;

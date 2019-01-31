@@ -38,7 +38,15 @@ router.post('/gamertag', (req, res, next) => {
           errors.push({ msg: 'That epic games account does not exist.' })
         } else if (oneResult.persona === undefined || oneResult.persona === null) {
           errors.push({ msg: 'No persona assoiated with that account. Check FAQ for more information.' })
-        } else if (User.count({ fortniteprofile: { id: oneResult.player.playerId } }) != 0)
+        }
+        var isTaken = false;
+        User.find({ fortniteprofile: { id: oneResult.player.playerId } })
+          .then(result => {
+            console.log(result);
+            isTaken = true;
+          })
+          .catch(err => console.log(err))
+        if (isTaken)
         {
           errors.push({ msg: 'That epic games account is already registered with a different user.'})
         }
