@@ -39,34 +39,38 @@ router.post('/gamertag', (req, res, next) => {
         } else if (oneResult.persona === undefined || oneResult.persona === null) {
           errors.push({ msg: 'No persona assoiated with that account. Check FAQ for more information.' })
         }
-        var isTaken = false;
-        User.find({ fortniteprofile: { id: oneResult.player.playerId } })
-          .then(result => {
-            console.log(result);
-            isTaken = true;
-          })
-          .catch(err => console.log(err))
-        if (isTaken)
-        {
-          errors.push({ msg: 'That epic games account is already registered with a different user.'})
-        }
         if (errors.length > 0) {
           res.render('gamertag', {
             errors,
             name
           })
-        } else {
-          let state = '&handle='+ encodeURIComponent(oneResult.player.handle) + '&playerId=' + encodeURIComponent(oneResult.player.playerId) + '&personaHandle=' + encodeURIComponent(oneResult.persona.handle) + '&personaId=' + encodeURIComponent(oneResult.persona.id)
-          console.log(state)
-          Scout.verification.request(oneResult.persona.id, 'http://localhost:5000/link/returnscout', state)
-            .then(data => {
-              console.log(data)
-              res.redirect(data.verificationUrl) 
-            })
-            .catch(err => console.log(err))
         }
+        User.find({ 'fortniteprofile.handle': oneResult.player.handle})
+          .then(result => {
+            if (result.length != 0)
+            {
+              errors.push({ msg: 'That epic games account is already registered with a different user.'})
+              res.render('gamertag', {
+                errors,
+                name
+              })
+            }
+            else {
+              let state = '&handle='+ encodeURIComponent(oneResult.player.handle) + '&playerId=' + encodeURIComponent(oneResult.player.playerId) + '&personaHandle=' + encodeURIComponent(oneResult.persona.handle) + '&personaId=' + encodeURIComponent(oneResult.persona.id)
+              console.log(state)
+              Scout.verification.request(oneResult.persona.id, 'http://localhost:5000/link/returnscout', state)
+                .then(data => {
+                  console.log(data)
+                  res.redirect(data.verificationUrl) 
+                })
+                .catch(err => console.log(err))
+            }
+          })
+          .catch(err => console.log(err))
       })
       .catch(err => console.log(err))
+        console.log(errors.length)
+        
   }
 })
 
