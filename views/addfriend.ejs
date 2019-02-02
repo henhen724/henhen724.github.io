@@ -22,7 +22,7 @@
         <% if(typeof friends != 'undefined' && friends.length != 0){ %>
             <div class="jumbotron rounded">
                 <% friends.forEach(function(friend) { %>
-                    <a href="/link/addfriendid?id=<%= encodeURIComponent(friend._id) %>&name=<%= encodeURIComponent(friend.name) %>" class="btn btn-secondary"><%= friend.name %></a>    
+                    <a href="/link/addfriendid?id=<%= encodeURIComponent(friend._id) %>&name=<%= encodeURIComponent(friend.name) %>" class="btn btn-primary"><%= friend.name %></a>    
                 <% }); %>
             </div>
         <% } %>

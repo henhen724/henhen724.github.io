@@ -6,11 +6,11 @@
 //
 
 $white:    #fff !default;
-$gray-100: #ebebeb !default;
-$gray-200: #AD5C3D !default;
+$gray-100: #e9e3e3 !default;
+$gray-200: rgb(44, 43, 42) !default;
 $gray-300: #dee2e6 !default;
 $gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
+$gray-500: #e5ebf1 !default;
 $gray-600: #868e96 !default;
 $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
@@ -26,7 +26,7 @@ $orange:  #f0ad4e !default;
 $yellow:  #ffd900 !default;
 $green:   #5cb85c !default;
 $teal:    #20c997 !default;
-$cyan:    #5bc0de !default;
+$cyan:    #d5f5ff !default;
 
 $primary:       $blue !default;
 $secondary:     $gray-200 !default;
@@ -41,7 +41,7 @@ $yiq-contrasted-threshold:  185 !default;
 
 // Body
 
-$body-bg:                   #343233 !default;
+$body-bg:                   #eeb004 !default;
 $body-color:                $gray-100 !default;
 
 // Components
