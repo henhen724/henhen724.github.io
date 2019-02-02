@@ -1,5 +1,8 @@
 // Your variable overrides go here, e.g.:
-
 @import "variables";
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 @import "bootswatch";
+
+a {
+    color: $dark;
+}

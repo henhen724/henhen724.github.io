@@ -7,7 +7,7 @@
 
 $white:    #fff !default;
 $gray-100: #ebebeb !default;
-$gray-200: #8f1d00 !default;
+$gray-200: #AD5C3D !default;
 $gray-300: #dee2e6 !default;
 $gray-400: #ced4da !default;
 $gray-500: #adb5bd !default;
@@ -15,7 +15,7 @@ $gray-600: #868e96 !default;
 $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
-$black:    #000 !default;
+$black:    #343233 !default;
 
 $blue:    #17dbe2 !default;
 $indigo:  #6610f2 !default;
@@ -23,7 +23,7 @@ $purple:  #6f42c1 !default;
 $pink:    #e83e8c !default;
 $red:     #d9534f !default;
 $orange:  #f0ad4e !default;
-$yellow:  #ebce2d !default;
+$yellow:  #ffd900 !default;
 $green:   #5cb85c !default;
 $teal:    #20c997 !default;
 $cyan:    #5bc0de !default;
@@ -41,7 +41,7 @@ $yiq-contrasted-threshold:  185 !default;
 
 // Body
 
-$body-bg:                   #000000 !default;
+$body-bg:                   #343233 !default;
 $body-color:                $gray-100 !default;
 
 // Components
@@ -88,7 +88,7 @@ $dropdown-link-hover-bg:            $table-hover-bg !default;
 
 // Navs
 
-$nav-link-disabled-color:           rgba(255,255,255,.4) !default;
+$nav-link-disabled-color:           #ffffff66 !default;
 
 $nav-tabs-border-color:             $gray-200 !default;
 $nav-tabs-link-active-color:        $body-color !default;
