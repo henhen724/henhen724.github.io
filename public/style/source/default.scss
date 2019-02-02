@@ -4,5 +4,9 @@
 @import "bootswatch";
 
 a {
-    color: $dark;
+    color: $secondary;
+}
+div#handdiv{
+    //background-image: url("PICTURE TO COME");
+    background-size: cover;
 }
