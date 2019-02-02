@@ -23,7 +23,8 @@ app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
 //Making Public Dir
-app.use(express.static(__dirname + '/public'))
+const path = require('path')
+app.use(express.static(path.join(__dirname, '../public')))
 
 // Bodyparsing
 app.use(express.urlencoded({ extended: false }));
@@ -73,6 +74,7 @@ app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/link', require('./routes/link'));
 app.use('/wage', require('./routes/wage'));
+app.use('/reacttest', require('./routes/reacttest'))
 
 //404 and Error pages
 app.use(function(req, res, next){
