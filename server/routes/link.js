@@ -47,7 +47,7 @@ router.post('/gamertag', (req, res, next) => {
             name
           })
         }
-        Persona.getPersonaByHandle(oneResult.player.persona.handle)
+        LinkedAccount.getAccountById(platform, oneResult.player.playerId)
           .then(result => {
             if (result.length != 0)
             {
@@ -57,7 +57,7 @@ router.post('/gamertag', (req, res, next) => {
                 name
               })
             } else {
-              let state = '&slug='+ encodeURIComponent('fortnite') + '&handle='+ encodeURIComponent(oneResult.player.handle) + '&playerId=' + encodeURIComponent(oneResult.player.playerId) + '&personaHandle=' + encodeURIComponent(oneResult.persona.handle) + '&personaId=' + encodeURIComponent(oneResult.persona.id)
+              let state = '&platform='+ encodeURIComponent(platform) +'&slug='+ encodeURIComponent('fortnite') + '&handle='+ encodeURIComponent(oneResult.player.handle) + '&playerId=' + encodeURIComponent(oneResult.player.playerId) + '&personaHandle=' + encodeURIComponent(oneResult.persona.handle) + '&personaId=' + encodeURIComponent(oneResult.persona.id)
               console.log(state)
               Scout.verification.request(oneResult.persona.id, 'http://localhost:5000/link/returnscout', state)
                 .then(data => {
@@ -70,88 +70,33 @@ router.post('/gamertag', (req, res, next) => {
           .catch(err => console.log(err))
       })
       .catch(err => console.log(err))
-        console.log(errors.length)
-        
   }
 })
 
 // Verification Reception
 router.get('/returnscout', ensureAuthenticated, (req, res) => {
   try {
-    const { token, state, slug, handle, playerId, personaHandle, personaId } = req.query
+    const { token, state, platform, slug, handle, playerId, personaHandle, personaId } = req.query
     const decoded = jwt.verify(token, require('../config/keys').ScoutClientSecret)
     const thisUser = req.user
-    const newPersona = new Persona({'game': slug, 'handle': personaHandle, })
-    thisUser.LinkedAccounts.find(account => account.id === playerId).then(
-      account.addPersona(newPersona).then(() => res.render('returnscout', { handle }))
-    )
-    thisUser.fortniteprofile = { handle: decodeURIComponent(handle), playerId: decodeURIComponent(playerId), personaHandle: decodeURIComponent(personaHandle), personaId: decodeURIComponent(personaId) }
-    thisUser.save()
-    res.render('returnscout', { handle })
+    const newPersona = new Persona({'game': slug, 'handle': personaHandle, 'id': personaId})
+    thisUser.LinkedAccounts.find(account => account.id === playerId).then( result => {
+      if(result.length != 0)
+        account.addPersona(newPersona).then(() => res.render('returnscout', { handle }))
+      else{
+        newAccount = new LinkedAccount({'platform': platform, 'handle': playerId, 'id': playerId})
+        thisUser.addLinkedAccount(newAccount)
+          .then(
+            newAccount.addPersona(newPersona)
+          )
+      }
+    })
+    
   } catch (err) {
     console.log(err)
     errors = [{ msg:'It appears the JSON Webtoken in your URL might have been fabricated. Make sure your connection is secure.' }]
     res.render('gamertag', { errors })
   }
-})
-
-
-// Add Payment Page 
-router.get('/payment', ensureAuthenticated, (req, res) => res.render('payment'))
-
-// Create User Credit Card Token
-router.post('/payment', (req, res) => {
-  const { name, cardnumber, CVC, expMonth, expYear, streetAddress, city, region, country, postalCode } = req.body
-  const cardInfo = {
-    name: name,
-    card: {
-      cvc: CVC,
-      number: cardnumber,
-      expYear: expYear,
-      expMonth: expMonth,
-      address: {
-        region: region,
-        postalCode: postalCode,
-        streetAddress: streetAddress,
-        country: country,
-        city: city
-      }
-    }
-  }
-
-})
-
-// Add Friend page
-router.get('/addfriend', ensureAuthenticated, (req, res) => res.render('addfriend'))
-
-router.post('/addfriend', ensureAuthenticated, (req, res) => {
-  const name = req.body.name
-  User.find({ name: name })
-   .then(friends => {
-     res.render('addfriend', { friends })
-   })
-   .catch(err => console.log(err))
-})
-
-router.get('/addfriendid', ensureAuthenticated, (req, res) => {
-  const { id } = req.query
-  User.findById(id)
-    .then(thefri => {
-      var sendId = req.user._id
-      var sendName = req.user.name
-      var newfriend = { id: sendId, name: sendName }
-      if(thefri.friendRequests.find(elem => elem.id == newfriend.id) == undefined) {
-        thefri.friendRequests = thefri.friendRequests.concat([newfriend])
-        thefri.save()
-        var friName = thefri.name
-        res.render('friendadded', { friName })
-      } else {
-        req.flash('error_msg', 'This person already has a friend request from you.')
-        res.redirect('/link/addfriend')
-      }
-    })
-    .catch(err => console.log(err))
-  
 })
 
 module.exports = router

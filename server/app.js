@@ -73,8 +73,10 @@ Scout.configure({
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/link', require('./routes/link'));
+//app.use('/friends', require('./routes/friends'));
+//app.use('/payment', require('./routes/payment'));
 app.use('/wage', require('./routes/wage'));
-app.use('/reacttest', require('./routes/reacttest'))
+app.use('/reacttest', require('./routes/reacttest'));
 
 //404 and Error pages
 app.use(function(req, res, next){

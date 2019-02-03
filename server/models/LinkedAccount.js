@@ -25,6 +25,11 @@ LinkedAccountSchema.method.addPersona = persona => {
     this.personas.push(persona)
     return this.save()
 }
+LinkedAccountSchema.method.getAccountById = (platform, id) =>{
+    LinkedAccount.find({'platform': platform, 'id': id}).then(account => {
+        return account;
+    })
+}
 
 const LinkedAccount = mongoose.model('LinkedAccount', LinkedAccountSchema)
 module.exports = LinkedAccount

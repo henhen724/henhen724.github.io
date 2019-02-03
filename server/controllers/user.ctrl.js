@@ -52,16 +52,16 @@ module.exports = {
      */
     getProfile: (req, res, next) => {
         User.findById(req.params.id)
-        .populate('author')
-        .populate('comments.author').exec((err, article)=> {
-            if (err)
-                res.send(err)
-            else if (!article)
-                res.send(404)
-            else
+            .populate('author')
+            .populate('comments.author').exec((err, article)=> {
+                if (err)
+                    res.send(err)
+                else if (!article)
+                    res.send(404)
+                else
                 res.send(article)
-            next()            
-        })
+                next()            
+            })
     }
-    
+
 }
