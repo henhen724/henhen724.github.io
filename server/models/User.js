@@ -21,26 +21,12 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  fortniteprofile: {
-    handle: {
-      type: String,
-      required: false
-    },
-    playerId: {
-      type: String,
-      require: false
-    },
-    personaHandle: {
-      type: String,
-      require: false
-    },
-    personaId: {
-      type: String,
-      required: false
-    },
-
-    required: false
-  },
+  LinkedAccounts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'LinkedAccount'
+    }
+  ],
   friends: [
     {
         type: mongoose.Schema.Types.ObjectId,
@@ -52,15 +38,31 @@ const UserSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }
-  ],
-  followers: [
-    {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    }
   ]
 })
 
-const User = mongoose.model('User', UserSchema)
+UserSchema.method.requestFriend = sender => {
+  this.friendRequests.push(sender.ObjectId)
+  return this.save()
+}
+UserSchema.method.addFriend = sender => {
+  this.friends.push(sender.ObjectId)
+  return this.save()
+}
+UserSchema.method.addLinkedAccount = account => {
+  this.LinkedAccounts.push(account)
+  return this.save()
+}
+UserSchema.method.getUserByName = name => {
+  User.find({ 'name': name }).then(userF =>{
+      return userF
+    })
+}
+UserSchema.method.getUserByEmail = email => {
+  User.find({ 'email': email }).then(userF =>{
+      return userF
+    })
+}
 
+const User = mongoose.model('User', UserSchema)
 module.exports = User

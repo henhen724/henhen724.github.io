@@ -6,6 +6,8 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 const User = require('../models/User')
+const LinkedAccount = require('../models/LinkedAccount')
+const Persona = require('../models/Persona')
 
 // Link Gamertag Page
 router.get('/gamertag', ensureAuthenticated, (req, res) => res.render('gamertag'))
@@ -45,7 +47,7 @@ router.post('/gamertag', (req, res, next) => {
             name
           })
         }
-        User.find({ 'fortniteprofile.handle': oneResult.player.handle})
+        Persona.getPersonaByHandle(oneResult.player.persona.handle)
           .then(result => {
             if (result.length != 0)
             {
@@ -54,9 +56,8 @@ router.post('/gamertag', (req, res, next) => {
                 errors,
                 name
               })
-            }
-            else {
-              let state = '&handle='+ encodeURIComponent(oneResult.player.handle) + '&playerId=' + encodeURIComponent(oneResult.player.playerId) + '&personaHandle=' + encodeURIComponent(oneResult.persona.handle) + '&personaId=' + encodeURIComponent(oneResult.persona.id)
+            } else {
+              let state = '&slug='+ encodeURIComponent('fortnite') + '&handle='+ encodeURIComponent(oneResult.player.handle) + '&playerId=' + encodeURIComponent(oneResult.player.playerId) + '&personaHandle=' + encodeURIComponent(oneResult.persona.handle) + '&personaId=' + encodeURIComponent(oneResult.persona.id)
               console.log(state)
               Scout.verification.request(oneResult.persona.id, 'http://localhost:5000/link/returnscout', state)
                 .then(data => {
@@ -77,16 +78,19 @@ router.post('/gamertag', (req, res, next) => {
 // Verification Reception
 router.get('/returnscout', ensureAuthenticated, (req, res) => {
   try {
-    const { token, state, handle, playerId, personaHandle, personaId } = req.query
+    const { token, state, slug, handle, playerId, personaHandle, personaId } = req.query
     const decoded = jwt.verify(token, require('../config/keys').ScoutClientSecret)
     const thisUser = req.user
+    const newPersona = new Persona({'game': slug, 'handle': personaHandle, })
+    thisUser.LinkedAccounts.find(account => account.id === playerId).then(
+      account.addPersona(newPersona).then(() => res.render('returnscout', { handle }))
+    )
     thisUser.fortniteprofile = { handle: decodeURIComponent(handle), playerId: decodeURIComponent(playerId), personaHandle: decodeURIComponent(personaHandle), personaId: decodeURIComponent(personaId) }
     thisUser.save()
     res.render('returnscout', { handle })
   } catch (err) {
     console.log(err)
-    errors = []
-    errors.push({ msg:'It appears the JSON Webtoken in your URL might have been fabricated. Make sure your connection is secure.' })
+    errors = [{ msg:'It appears the JSON Webtoken in your URL might have been fabricated. Make sure your connection is secure.' }]
     res.render('gamertag', { errors })
   }
 })
