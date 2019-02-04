@@ -14,7 +14,9 @@ require('./config/passport')(passport);
 const db = require('./config/keys').MongoURI;
 
 //Connect to The Database Using MongoDB
-mongoose.connect(db, { useNewUrlParser: true })
+mongoose.connect(db, {
+    useNewUrlParser: true
+  })
   .then(() => console.log('Connection Made to MongoDB ...'))
   .catch(err => console.log(err));
 
@@ -27,7 +29,9 @@ const path = require('path')
 app.use(express.static(path.join(__dirname, '../public')))
 
 // Bodyparsing
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+  extended: false
+}));
 
 //Express Session
 app.use(
@@ -58,10 +62,10 @@ const SDKiD = require('./config/keys').ScoutClientId;
 
 //Scout Configuration
 Scout.configure({
-  clientId: SDKiD,
-  clientSecret: secret,
-  scope: "public.read"
-})
+    clientId: SDKiD,
+    clientSecret: secret,
+    scope: "public.read"
+  })
   .then(() => console.log('Connection to Scout SDK Established ...'))
   .catch(err => console.log(err));
 
@@ -79,7 +83,7 @@ app.use('/wage', require('./routes/wage'));
 app.use('/reacttest', require('./routes/reacttest'));
 
 //404 and Error pages
-app.use(function(req, res, next){
+app.use(function (req, res, next) {
   res.status(404);
   res.render('404page')
 })
