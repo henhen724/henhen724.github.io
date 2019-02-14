@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import jwt_decode from "jwt-decode";
-import { Provider } from "react-redux";
-import setAuthToken from "./utils/setAuthToken";
-import { setCurrentUser, logoutUser } from "./actions/authActions";
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
+import { Provider } from 'react-redux';
+import setAuthToken from './utils/setAuthToken';
+import { setCurrentUser, logoutUser } from './actions/authActions';
 
-import store from "./store";
+import store from './store';
 
-import Navbar from "./components/layout/Navbar";
-import Footer from "./components/layout/Footer";
-import Landing from "./components/layout/Landing";
-import Register from "./components/auth/Register";
-import Login from "./components/auth/Login";
+import MyNavbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+import Landing from './components/layout/Landing';
+import Register from './components/auth/Register';
+import Login from './components/auth/Login';
 
-import "./App.css";
+import './App.css';
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -27,7 +27,7 @@ if (localStorage.jwtToken) {
     store.dispatch(logoutUser());
     // TODO: Clear current profile
 
-    window.location.href = "/login";
+    window.location.href = '/login';
   }
 }
 
@@ -37,7 +37,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App showcase-container">
-            <Navbar />
+            <MyNavbar />
             <Route exact path="/" component={Landing} />
             <div className="container">
               <Route exact path="/register" component={Register} />
