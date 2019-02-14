@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
-import { Navbar, Icon } from 'react-materialize';
+import { Navbar /*, Icon*/ } from 'react-materialize';
 
 class MyNavbar extends Component {
   onLogoutClick = e => {
