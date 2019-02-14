@@ -12,32 +12,30 @@ class Landing extends Component {
   };
   render() {
     return (
-      <div className="showcase-container">
-        <Row>
-          <Col s={12} m={10} offset="m1" className="center">
-            <h5>Welcome To MicDrop</h5>
-            <h1>
-              1. Mic Up
-              <br />
-              2. Team Up
-              <br />
-              3. Drop Down
-            </h1>
-            <p>International Platform That Ensures Seamless Matchmaking</p>
+      <Row>
+        <Col s={12} m={10} offset="m1" className="center">
+          <h5>Welcome To MicDrop</h5>
+          <h1>
+            1. Mic Up
             <br />
+            2. Team Up
             <br />
-            <Link to="/about">
-              <Button waves="teal" className="white blue-text" large={true}>
-                Learn More
-              </Button>
-            </Link>
-            <br />
-            <br />
-            <br />
-            <br />
-          </Col>
-        </Row>
-      </div>
+            3. Drop Down
+          </h1>
+          <p>International Platform That Ensures Seamless Matchmaking</p>
+          <br />
+          <br />
+          <Link to="/about">
+            <Button waves="teal" className="white blue-text" large={true}>
+              Learn More
+            </Button>
+          </Link>
+          <br />
+          <br />
+          <br />
+          <br />
+        </Col>
+      </Row>
     );
   }
 }
