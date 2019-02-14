@@ -14,7 +14,7 @@ class MyNavbar extends Component {
     const { isAuthenticated, user } = this.props.auth;
 
     const logout = (
-      <li>
+      <li key="logout">
         <NavLink onClick={this.onLogoutClick} to="/login">
           <img
             className="rounded-circle"
@@ -28,27 +28,27 @@ class MyNavbar extends Component {
       </li>
     );
     const profile = (
-      <li>
+      <li key="profile">
         <NavLink to="/dashboard">My Profile</NavLink>
       </li>
     );
     const register = (
-      <li>
+      <li key="register">
         <NavLink to="/register">Sign Up</NavLink>
       </li>
     );
     const login = (
-      <li>
+      <li key="login">
         <NavLink to="/login">Login</NavLink>
       </li>
     );
 
     return (
       <Navbar brand="MicDrop" className="transparent" right>
-        <li>
+        <li key="home">
           <NavLink to="/">Home</NavLink>
         </li>
-        <li>
+        <li key="about">
           <NavLink to="/about">About</NavLink>
         </li>
         {isAuthenticated ? [profile, logout] : [register, login]}

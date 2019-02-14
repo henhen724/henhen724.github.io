@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { Row, Col } from 'react-materialize';
+import { Button, Row, Col } from 'react-materialize';
 
 class Landing extends Component {
   componentDidMount = () => {
@@ -26,11 +26,10 @@ class Landing extends Component {
             <p>International Platform That Ensures Seamless Matchmaking</p>
             <br />
             <br />
-            <Link
-              to="/about"
-              className="btn btn-large white blue-text waves-effect waves-blue"
-            >
-              Learn More
+            <Link to="/about">
+              <Button waves="teal" className="white blue-text" large={true}>
+                Learn More
+              </Button>
             </Link>
             <br />
             <br />
