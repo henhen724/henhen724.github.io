@@ -44,7 +44,7 @@ class MyNavbar extends Component {
     );
 
     return (
-      <Navbar brand="MicDrop" left>
+      <Navbar brand="MicDrop" className="transparent" left>
         <li>
           <NavLink to="/">Home</NavLink>
         </li>
