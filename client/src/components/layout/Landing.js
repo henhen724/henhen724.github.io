@@ -30,10 +30,6 @@ class Landing extends Component {
               Learn More
             </Button>
           </Link>
-          <br />
-          <br />
-          <br />
-          <br />
         </Col>
       </Row>
     );

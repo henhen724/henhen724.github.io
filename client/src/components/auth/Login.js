@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Button, Col, Row } from 'react-materialize';
 import TextFieldGroup from '../common/TextFieldGroup';
 
 import { loginUser } from '../../actions/authActions';
@@ -46,29 +48,47 @@ class Login extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Log In</h1>
-              <p className="lead text-center">
-                Sign in to your DevConnector account
-              </p>
-              <form onSubmit={this.onSubmit}>
-                <TextFieldGroup
-                  type="email"
-                  placeholder="Email Address"
-                  name="email"
-                  error={errors.email}
-                  value={this.state.email}
-                  onChange={this.onChange}
-                />
-                <TextFieldGroup
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  error={errors.password}
-                  value={this.state.password}
-                  onChange={this.onChange}
-                />
-                <input type="submit" className="btn btn-info btn-block mt-4" />
-              </form>
+              <Row>
+                <Col s={12} m={10} className="center">
+                  <h1 className="display-4 text-center">Log In</h1>
+                  <p className="lead text-center">
+                    Sign in to your DevConnector account
+                  </p>
+                  <form onSubmit={this.onSubmit} className="center">
+                    <TextFieldGroup
+                      type="email"
+                      placeholder="Email Address"
+                      name="email"
+                      error={errors.email}
+                      value={this.state.email}
+                      onChange={this.onChange}
+                    />
+                    <TextFieldGroup
+                      type="password"
+                      placeholder="Password"
+                      name="password"
+                      error={errors.password}
+                      value={this.state.password}
+                      onChange={this.onChange}
+                    />
+                    <Col s={3} />
+                    <Col s={3}>
+                      <input
+                        type="submit"
+                        className="btn btn-info btn-block mt-4 center"
+                      />
+                    </Col>
+                    <Col s={3}>
+                      <Link to="/register">
+                        <Button className="btn btn-info btn-block mt-5 center">
+                          Sign Up
+                        </Button>
+                      </Link>
+                    </Col>
+                    <Col s={3} />
+                  </form>
+                </Col>
+              </Row>
             </div>
           </div>
         </div>

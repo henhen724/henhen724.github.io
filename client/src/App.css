@@ -3,7 +3,7 @@ img {
 }
 
 .showcase-container {
-  background: url(img/background.jpg);
+  background: url('/img/background.jpg');
   background-size: cover;
   background-position: center;
   min-height: 600px;
@@ -11,7 +11,7 @@ img {
 }
 .landing {
   position: relative;
-  background: url("./img/showcase.jpg") no-repeat;
+  background: url('/img/showcase.jpg') no-repeat;
   background-size: cover;
   background-position: center;
   height: 100vh;

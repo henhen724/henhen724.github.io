@@ -10,6 +10,7 @@ import store from './store';
 import MyNavbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Landing from './components/layout/Landing';
+import About from './components/layout/About';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 
@@ -39,6 +40,7 @@ class App extends Component {
           <div className="App showcase-container">
             <MyNavbar />
             <Route exact path="/" component={Landing} />
+            <Route exact path="/about" component={About} />
             <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
