@@ -44,29 +44,29 @@ class Login extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div className="login">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 m-auto">
+      <div className='login'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-8 m-auto'>
               <Row>
-                <Col s={12} m={10} className="center">
-                  <h1 className="display-4 text-center">Log In</h1>
-                  <p className="lead text-center">
-                    Sign in to your DevConnector account
+                <Col s={12} m={10} className='center'>
+                  <h1 className='display-4 text-center'>Log In</h1>
+                  <p className='lead text-center'>
+                    Sign in to your MicDrop account
                   </p>
-                  <form onSubmit={this.onSubmit} className="center">
+                  <form onSubmit={this.onSubmit} className='center'>
                     <TextFieldGroup
-                      type="email"
-                      placeholder="Email Address"
-                      name="email"
+                      type='email'
+                      placeholder='Email Address'
+                      name='email'
                       error={errors.email}
                       value={this.state.email}
                       onChange={this.onChange}
                     />
                     <TextFieldGroup
-                      type="password"
-                      placeholder="Password"
-                      name="password"
+                      type='password'
+                      placeholder='Password'
+                      name='password'
                       error={errors.password}
                       value={this.state.password}
                       onChange={this.onChange}
@@ -74,13 +74,13 @@ class Login extends Component {
                     <Col s={3} />
                     <Col s={3}>
                       <input
-                        type="submit"
-                        className="btn btn-info btn-block mt-4 center"
+                        type='submit'
+                        className='btn btn-info btn-block mt-4 center'
                       />
                     </Col>
                     <Col s={3}>
-                      <Link to="/register">
-                        <Button className="btn btn-info btn-block mt-5 center">
+                      <Link to='/register'>
+                        <Button className='btn btn-info btn-block mt-5 center'>
                           Sign Up
                         </Button>
                       </Link>
