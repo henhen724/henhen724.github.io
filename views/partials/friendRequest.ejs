@@ -1,5 +1,0 @@
-<% if(typeof friendRequests != 'undefined' && friendRequests.length != 0){ %> <% friendRequests.forEach(function(friend) { %>
-    <a href="/profiles?id=<%= encodeURIComponent(friend.id) %>" class="btn btn-secondary"><%= friend.name %></a>    
-<% }); %> <% } else { %>
-    <h2 class="card-title"> You have no friend requests. </h2>
-<% } %>
