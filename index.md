@@ -1,15 +1,21 @@
-+++
-title = "Henry Hunt"
-+++
+@def title = "Henry Hunt"
+@def tags = ["syntax", "code"]
 
-# Henry Hunt
+# Under construction, comeback latter
 
-Physics Ph.D. student at Stanford University.
+\newcommand{\E}[1]{\mathbb E\left[#1\right]}
 
-I work on problems spanning accelerator physics, atomic physics, and the
-computational/theoretical methods that connect them. Read more [about
-me](/about/).
+$$\rho = \E{\ket{\psi}\bra{\psi}}$$
 
----
+```julia:pyplot1
+using PyPlot
+PyPlot.ioff() #hide
+figure(figsize=(8, 6))
+x = range(-2, 2, length=500)
+for α in 1:4
+    plot(x, sinc.(α .* x))
+end
+savefig(joinpath(@OUTPUT, "sinc.svg")) # hide
+```
 
-[GitHub](https://github.com/henhen724) · [Study](https://henhen724.github.io/study/) · [Email](mailto:hshunt@stanford.edu?subject=Hello)
+\fig{sinc}
